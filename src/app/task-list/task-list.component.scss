@@ -1,0 +1,65 @@
+.form-label {
+        font-size: var(--font-large);
+        font-family: var(--font-secondary);
+        z-index: 0;
+
+}
+
+.input-group {
+    font-family: var(--font-secondary);
+    font-size: var(--font-large);
+}
+
+.time {
+    background-color: rgb(255, 182, 216);
+}
+
+.form-control:focus {
+    border-color: inherit;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    outline:none;
+}
+
+button {
+    z-index: -1;
+}
+
+
+button:focus {
+    border-color: inherit;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    outline:none;
+}
+
+table {
+    background-color: rgb(255, 232, 223);
+    border-radius: 5px;
+    border-color: #fff;
+    box-shadow: 1px 1px 4px;
+
+    & thead {
+        font-size: var(--font-regular);
+        font-family: var(--font-secondary);
+    }
+
+    & tbody {
+        font-size: var(--font-light);
+        font-family: var(--font-secondary);
+        font-size: var(--font-regular);
+
+        & .checkbox {
+            background-color: rgb(0, 110, 255);
+            border: none;
+            border-radius: 25px;
+            width: 100px;
+            height: 25px;
+        }
+
+        & .update {
+            background-color: green;
+        }
+    }
+    
+}

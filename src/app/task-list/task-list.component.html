@@ -1,0 +1,110 @@
+<div class="container px-0 d-flex align-items-center mt-5 mb-3">
+  <label for="task" class=" container d-flex justify-content-start form-label mt-5 pt-5">Add task:</label>
+<label for="task" class="container d-flex justify-content-end form-label px-5 me-4 mt-5 pt-5 text-nowrap">Add DeadLine:</label>
+</div>
+<div class="container px-0 input-group mb-3">
+  <input type="text" placeholder="Write here what to do..." [(ngModel)]="inputText" class="form-control"  >
+  
+  <div class="form-group">
+    <input class="form-control time" type="date" name="dueDate" [(ngModel)]="inputTime" required/>
+</div>
+  <button (click)="addTask(inputText, inputTime)" class="btn btn-success">Add +</button>
+</div>
+
+<label for="table" class="container d-flex justify-content-center form-label mt-5 mb-3">Tasks List:</label>
+<table class="table table-striped container">
+  <thead>
+    <tr>
+      <th scope="col">DESCRIPTION</th>
+      <th scope="col">DEADLINE</th>
+      <th scope="col">CHECK STATUS</th>
+      <th scope="col">ACTION</th>
+      <th scope="col">ACTION</th>
+    </tr>
+  </thead>
+  <tbody>
+    <ng-container *ngFor="let item of task">
+      <tr *ngIf="!item.done" [ngStyle]="{'background-color': tomorowTime(item.deadline) ? 'yellow' : 'pink' && futureTime(item.deadline) ? 'white' : 'pink'}">
+      <td>{{item.text}}</td>
+      <td>{{item.deadline | date}}</td>
+      <td><button (click)="checkTask(item.text, item.deadline, item.id, item.done)" class="btn btn-sm text-light checkbox">DONE</button></td>
+      <td><button class="btn btn-sm text-light update" data-bs-toggle="modal" data-bs-target="#exampleModal1">UPDATE</button></td>
+      <td><button class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">DELETE</button></td>
+    </tr>
+    </ng-container>
+  </tbody>
+</table>
+
+<label for="table" class="container d-flex justify-content-center form-label mt-5 mb-3">Campleted Tasks List:</label>
+<table class="table table-striped container">
+  <thead>
+    <tr>
+      <th scope="col">DESCRIPTION</th>
+      <th scope="col">DEADLINE</th>
+      <th scope="col">STATUS</th>
+      <th scope="col">ACTION</th>
+    </tr>
+  </thead>
+  <tbody>
+    <ng-container *ngFor="let item of task">
+      <tr *ngIf="item.done">
+      <td>{{item.text}}</td>
+      <td>{{item.deadline | date}}</td>
+      <td><div>
+        DONE
+      </div></td>
+      <td><button (click)="removeTaskDone(item.id)" class="btn btn-sm btn-danger">DELETE</button></td>
+    </tr>
+    </ng-container>
+  </tbody>
+</table>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered ">
+    <div class="modal-content">
+      <div class="modal-header d-flex align-items-center">
+        <h2 class="modal-title m-0 text-danger h2" id="exampleModalLabel">Warning!</h2>
+        <div class="btn-close" data-bs-dismiss="modal" aria-label="Close"></div>
+      </div>
+      <div class="modal-body bg-danger text-light text-center">
+        Are you sure that you wanna delete this task?
+      </div>
+      <div class="modal-footer">
+        <tr *ngFor="let item of task | slice:0:5; let last=last">
+          <td class="d-none">{{item.text}}</td>
+          <td class="d-none">{{item.deadline | date}}</td>
+          <div *ngIf="last" class="btn-close" class="btn btn-secondary mx-3" data-bs-dismiss="modal">No</div>
+          <div *ngIf="last" (click)="removeTask(item.id)" data-bs-dismiss="modal" class="btn-close" type="button" class="btn btn-danger">Yes</div>
+      </tr>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Update -->
+<div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered ">
+    <div class="modal-content">
+      <div class="modal-header d-flex align-items-center">
+        <h2 class="modal-title m-0 text-success h2" id="exampleModalLabel1">Update</h2>
+        <div class="btn-close" data-bs-dismiss="modal" aria-label="Close"></div>
+      </div>
+      <div class="modal-body bg-success text-light text-center">
+        <div class="container px-0 input-group mb-3">
+          <input type="text" placeholder="Update task..." [(ngModel)]="modalText" class="form-control" >
+          <div class="form-group">
+            <input class="form-control time" type="date"  [(ngModel)]="modalTime" required/>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <tr *ngFor="let item of task | slice:0:5; let last=last">
+          <td class="d-none">{{item.text}}</td>
+          <td class="d-none">{{item.deadline | date}}</td>
+          <div *ngIf="last" (click)="updateTask(modalText, modalTime)" (click)="removeTask(item.id)"  data-bs-dismiss="modal" class="btn-close" type="button" class="btn btn-light text-success">Done</div>
+      </tr>
+      </div>
+    </div>
+  </div>
+</div>
+

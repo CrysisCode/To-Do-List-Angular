@@ -1,0 +1,49 @@
+@import "~bootstrap/dist/css/bootstrap.min.css";
+
+@font-face {
+  font-family: "Kalam-Bold";
+  src: url("assets/font/Kalam-Bold.ttf");
+}
+
+@font-face {
+  font-family: "Kalam-Regular";
+  src: url("assets/font/Kalam-Regular.ttf");
+}
+
+@font-face {
+  font-family: "Kalam-Light";
+  src: url("assets/font/Kalam-Light.ttf");
+}
+
+:root {
+    --font-primary: "Kalam-Bold", serif;
+    --font-secondary: "Kalam-Regular", serif;
+    --color-primary: #627f47;
+    --color-secondary: #8ea84f;
+    --color-background-primary: rgb(255, 255, 255);
+    --color-background-secondary: #fefce4;
+    --color-background-tertiary: #e5e5e5;
+    --color-text-primary: #333333;
+    --font-jumbo: 36px;
+    --font-large: 24px;
+    --font-regular: 16px;
+    --font-small: 12px;
+  }
+
+  body {
+    background-color: var(--color-background-primary);
+  
+    width: 100vw;
+    max-width: 100%;
+    width: 100vw;
+    &::-webkit-scrollbar {
+      width: 2px;
+      background-color: var(--color-primary);
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: var(--color-secondary);
+      border-radius: 3px;
+    }
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-primary) var(--color-secondary);
+  }

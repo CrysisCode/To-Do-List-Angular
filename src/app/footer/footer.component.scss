@@ -1,0 +1,12 @@
+.footer {
+    background-color: rgb(75, 75, 75);
+    bottom: 0;
+
+    & a {
+        color: rgb(231, 231, 231);
+        font-size: var(--font-regular);
+        font-family: var(--font-secondary);
+        text-decoration: none;
+    }
+}
+

@@ -1,0 +1,17 @@
+.navbar {
+    background-color: rgb(230, 102, 63);
+    color: black;
+    box-shadow: 1px 1px 3px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 5;
+
+    & a {
+        color: #fff;
+        font-size: var(--font-jumbo);
+        font-family: var(--font-primary);
+        text-decoration: none;
+    }
+}
+
