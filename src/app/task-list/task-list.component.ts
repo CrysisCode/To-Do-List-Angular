@@ -17,36 +17,7 @@ export class TaskListComponent implements OnInit {
   modalText:any = '';
   modalTime:any = '';
   errorMessage: string = '';
-  task: ITask[] = [
-    {
-    "id": 1,
-    "text": "Task1",
-    "deadline": new Date("12.8.2021."),
-    "done": false,
-    "warning": true
-    },
-    {
-      "id": 2,
-      "text": "Task2",
-      "deadline": new Date("12.10.2021."),
-      "done": false,
-      "warning": false
-      },
-      {
-        "id": 3,
-        "text": "Task3",
-        "deadline": new Date("12.21.2021."),
-        "done": false,
-        "warning": true
-        },
-        {
-          "id": 4,
-          "text": "Task4",
-          "deadline": new Date("12.29.2021."),
-          "done": false,
-          "warning": true
-          }
-];
+  task: ITask[] = [];
   
 constructor(private fetchDataService: FetchDataService){}
 

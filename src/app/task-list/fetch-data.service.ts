@@ -9,7 +9,7 @@ import { catchError, tap } from 'rxjs/operators';
 })
 export class FetchDataService {
 
-  private privateUrl = '../../assets/tasks.json';
+  private privateUrl = 'http://localhost:3000/tasksList';
 
   constructor(private http: HttpClient) {}
 
