@@ -25,6 +25,10 @@ export class FetchDataService {
     return this.http.delete<ITask>(url);
   }
 
+  createTask(task: ITask): Observable<ITask> {
+    return this.http.post<ITask>(this.privateUrl, task);
+  }
+
   private handleError(err: HttpErrorResponse) {
     let errorMessage = '';
     if (err.error instanceof ErrorEvent) {

@@ -36,6 +36,11 @@ constructor(private fetchDataService: FetchDataService){}
     )
   }
 
+  createTask(task: ITask) {
+    this.fetchDataService.createTask(task)
+    .subscribe((task) => (this.task.push(task)))
+  }
+
   tomorowTime (time:any) {
     
     if(isTomorrow(new Date(time))){
