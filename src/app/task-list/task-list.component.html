@@ -101,7 +101,7 @@
         <tr *ngFor="let item of task | slice:0:5; let last=last">
           <td class="d-none">{{item.text}}</td>
           <td class="d-none">{{item.deadline | date}}</td>
-          <div *ngIf="last" (click)="updateTask(modalText, modalTime)" (click)="removeTask(item.id)"  data-bs-dismiss="modal" class="btn-close" type="button" class="btn btn-light text-success">Done</div>
+          <div *ngIf="last" (click)="updateTask(modalText, modalTime)" (click)="deleteTask(task.id)"  data-bs-dismiss="modal" class="btn-close" type="button" class="btn btn-light text-success">Done</div>
       </tr>
       </div>
     </div>
