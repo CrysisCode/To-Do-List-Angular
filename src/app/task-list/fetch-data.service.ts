@@ -20,6 +20,11 @@ export class FetchDataService {
     );
   }
 
+  deleteTask(task: ITask): Observable<ITask> {
+    const url = `${this.privateUrl}/${task.id}`;
+    return this.http.delete<ITask>(url);
+  }
+
   private handleError(err: HttpErrorResponse) {
     let errorMessage = '';
     if (err.error instanceof ErrorEvent) {

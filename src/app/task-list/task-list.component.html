@@ -75,7 +75,7 @@
           <td class="d-none">{{item.text}}</td>
           <td class="d-none">{{item.deadline | date}}</td>
           <div *ngIf="last" class="btn-close" class="btn btn-secondary mx-3" data-bs-dismiss="modal">No</div>
-          <div *ngIf="last" (click)="removeTask(item.id)" data-bs-dismiss="modal" class="btn-close" type="button" class="btn btn-danger">Yes</div>
+          <div *ngIf="last" (click)="deleteTask(task.id)" data-bs-dismiss="modal" class="btn-close" type="button" class="btn btn-danger">Yes</div>
       </tr>
       </div>
     </div>

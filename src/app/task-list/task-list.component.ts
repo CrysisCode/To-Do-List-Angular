@@ -28,6 +28,14 @@ constructor(private fetchDataService: FetchDataService){}
     });
   }
 
+  deleteTask(task: ITask) {
+    this.fetchDataService
+    .deleteTask(task)
+    .subscribe(
+      () => (this.task = this.task.filter((item) => item.id !== task.id))
+    )
+  }
+
   tomorowTime (time:any) {
     
     if(isTomorrow(new Date(time))){
