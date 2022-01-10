@@ -1,14 +1,18 @@
 <div class="container px-0 d-flex align-items-center mt-5 mb-3">
   <label for="task" class=" container d-flex justify-content-start form-label mt-5 pt-5">Add task:</label>
-<label for="task" class="container d-flex justify-content-end form-label px-5 me-4 mt-5 pt-5 text-nowrap">Add DeadLine:</label>
+  <label for="task" class="container d-flex justify-content-end form-label px-5 me-4 mt-5 pt-5 text-nowrap">Add
+    DeadLine:</label>
 </div>
+
 <div class="container px-0 input-group mb-3">
-  <input type="text" placeholder="Write here what to do..." [(ngModel)]="inputText" class="form-control"  >
-  
+  <input type="text" placeholder="Write here what to do..." [(ngModel)]="inputText" class="form-control">
+
   <div class="form-group">
-    <input class="form-control time" type="date" name="dueDate" [(ngModel)]="inputTime" required/>
-</div>
-  <button (click)="createTask(inputText)" class="btn btn-success">Add +</button>
+    <input class="form-control time" type="date" name="dueDate" [(ngModel)]="inputTime" required />
+  </div>
+
+  <button (click)="createTask(inputText, inputTime)" class="btn btn-success">Add +</button>
+
 </div>
 
 <label for="table" class="container d-flex justify-content-center form-label mt-5 mb-3">Tasks List:</label>

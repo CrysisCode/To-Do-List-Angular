@@ -1,6 +1,5 @@
-import { isNgTemplate } from '@angular/compiler';
-import { Component, OnInit, } from '@angular/core';
-import { isAfter, isBefore, isPast, isToday, monthsInYear, isTomorrow, isYesterday, isFuture } from 'date-fns';
+import { Component, OnInit, Input } from '@angular/core';
+import { isBefore, isPast, isTomorrow, isFuture } from 'date-fns';
 import { FetchDataService } from './fetch-data.service';
 import { ITask } from './task';
 
@@ -11,8 +10,8 @@ import { ITask } from './task';
 })
 export class TaskListComponent implements OnInit {
 
-  currentDate:any = new Date();
-  inputText:string = '';
+  currentDate = new Date();
+  inputText:any = '';
   inputTime:any = '';
   modalText:any = '';
   modalTime:any = '';
@@ -23,7 +22,7 @@ constructor(private fetchDataService: FetchDataService){}
 
   ngOnInit(): void {
     this.fetchDataService.getTasks().subscribe({
-      next: tasks => this.task = tasks,
+      next: (tasks:any) => this.task = tasks,
       error: err => this.errorMessage = err
     });
   }
@@ -31,14 +30,14 @@ constructor(private fetchDataService: FetchDataService){}
   deleteTask(task: ITask) {
     this.fetchDataService
     .deleteTask(task)
-    .subscribe(
-      () => (this.task = this.task.filter((item) => item.id !== task.id))
+    .subscribe(() => (this.task = this.task.filter((item) => item.id !== task.id))
     )
   }
 
   createTask(task: ITask) {
-    this.fetchDataService.createTask(task)
-    .subscribe((task) => (this.task.push(task)))
+    this.fetchDataService
+    .createTask(task)
+    .subscribe((task) => this.task.push(task))
   }
 
   tomorowTime (time:any) {
@@ -53,14 +52,12 @@ constructor(private fetchDataService: FetchDataService){}
   }
 
   futureTime (time:any) {
-    
     if(isFuture(new Date(time))){
       return true;
     }
     else {
       return false;
     }
-    
   }
 
   addTask (item:string, time:any)
@@ -76,8 +73,6 @@ constructor(private fetchDataService: FetchDataService){}
       console.warn(item,time);
       this.inputText = '';
       this.inputTime = null;
-      
-      // TODO resetirati input fields, item = '', time = null"   XXX
     }
   }
 

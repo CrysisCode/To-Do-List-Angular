@@ -3,7 +3,17 @@
     {
       "id": 1,
       "text": "Task1",
-      "deadline": "12/12/2022"
+      "deadline": "1/9/2022"
+    },
+    {
+      "id": 2,
+      "text": "Task2",
+      "deadline": "1/10/2022"
+    },
+    {
+      "id": 3,
+      "text": "Task3",
+      "deadline": "12/1/2022"
     }
   ]
 }

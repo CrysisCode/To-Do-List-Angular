@@ -1,8 +1,14 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { ITask } from '../task-list/task';
 import { Observable, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
+
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Content-Type': 'application/json',
+  }),
+};
 
 @Injectable({
   providedIn: 'root'
@@ -26,7 +32,8 @@ export class FetchDataService {
   }
 
   createTask(task: ITask): Observable<ITask> {
-    return this.http.post<ITask>(this.privateUrl, task);
+    return this.http.post<ITask>(this.privateUrl, task, httpOptions)
+    .pipe(catchError(this.handleError));
   }
 
   private handleError(err: HttpErrorResponse) {
